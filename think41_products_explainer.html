@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Think41 — Products Explained</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f4f0;--surf:#fff;--surf2:#faf9f6;--surf3:#f0ede8;--brd:#e0dcd5;
+  --ink:#0f0e0c;--ink2:#4a4640;--ink3:#9a958e;--inv:#f5f4f0;
+  --red:#c0392b;--red-s:#fef0ee;
+  --grn:#16a34a;--grn-s:#f0fdf4;
+  --amb:#b45309;--amb-s:#fffbeb;
+  --blu:#1d4ed8;--blu-s:#eff6ff;
+  --font:'Inter',system-ui,sans-serif;
+  --display:'Bebas Neue',Impact,sans-serif;
+  --r:10px;--rx:18px;
+  --sh:0 2px 12px rgba(15,14,12,.08);
+  --sh2:0 8px 40px rgba(15,14,12,.13);
+}
+[data-theme="dark"]{
+  --bg:#0c0b09;--surf:#161411;--surf2:#1c1a16;--surf3:#222018;--brd:#2e2b24;
+  --ink:#ede9e0;--ink2:#a09990;--ink3:#605a52;--inv:#0c0b09;
+  --red:#f05546;--red-s:rgba(192,57,43,.2);
+  --grn:#22c55e;--grn-s:rgba(22,163,74,.2);
+  --amb:#fbbf24;--amb-s:rgba(180,83,9,.2);
+  --blu:#60a5fa;--blu-s:rgba(29,78,216,.2);
+  --sh:0 2px 12px rgba(0,0,0,.3);--sh2:0 8px 40px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.w{width:min(1040px,calc(100% - 3rem));margin-inline:auto}
+
+/* NAV */
+.hdr{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
+.hdr-inner{display:flex;align-items:center;gap:12px;padding:.65rem 0}
+.logo{font-family:var(--display);font-size:22px;letter-spacing:.05em;flex-shrink:0}
+.logo em{color:var(--red);font-style:normal}
+.pills-wrap{flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.pills-wrap::-webkit-scrollbar{display:none}
+.pills{display:flex;gap:4px;padding-bottom:1px}
+.pill{white-space:nowrap;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 13px;border-radius:99px;border:1px solid var(--brd);background:var(--surf);color:var(--ink3);transition:all .15s;flex-shrink:0}
+.pill:hover,.pill.active{background:var(--ink);color:var(--inv);border-color:var(--ink)}
+.btn-back{font-size:11px;font-weight:700;padding:5px 13px;border-radius:99px;border:1px solid var(--brd);background:var(--surf);color:var(--ink3);white-space:nowrap;flex-shrink:0;transition:all .15s}
+.btn-back:hover{background:var(--ink);color:var(--inv);border-color:var(--ink)}
+.btn-theme{font-size:11px;font-weight:700;padding:5px 13px;border-radius:99px;border:1px solid var(--brd);background:var(--surf);white-space:nowrap;color:var(--ink3);flex-shrink:0}
+.btn-theme:hover{background:var(--ink);color:var(--inv)}
+
+/* SECTIONS */
+section{padding:72px 0;border-bottom:2px solid var(--brd)}
+section:last-of-type{border-bottom:0}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);background:var(--red-s);padding:4px 12px;border-radius:99px;margin-bottom:14px}
+.eyebrow.grn{color:var(--grn);background:var(--grn-s)}
+.eyebrow.amb{color:var(--amb);background:var(--amb-s)}
+.eyebrow.blu{color:var(--blu);background:var(--blu-s)}
+.billboard{font-family:var(--display);font-size:clamp(40px,5.5vw,74px);line-height:.95;letter-spacing:.02em;color:var(--ink);margin-bottom:20px;text-transform:uppercase}
+.billboard em{color:var(--red);font-style:normal;display:block}
+.section-sub{font-size:16px;color:var(--ink2);max-width:640px;margin-bottom:36px;line-height:1.7}
+.callout{border-left:5px solid var(--red);background:var(--red-s);border-radius:0 var(--r) var(--r) 0;padding:18px 24px;margin:24px 0;font-size:15px;font-weight:600;color:var(--ink);line-height:1.65}
+.callout.gold{border-color:var(--amb);background:var(--amb-s)}
+.callout.green{border-color:var(--grn);background:var(--grn-s)}
+.callout.blue{border-color:var(--blu);background:var(--blu-s)}
+.callout strong{color:var(--red)}
+.callout.gold strong{color:var(--amb)}
+.callout.green strong{color:var(--grn)}
+.callout.blue strong{color:var(--blu)}
+mark{background:linear-gradient(120deg,#fbbf2440,#fbbf2440);color:var(--ink);padding:0 3px;border-radius:3px}
+
+/* HERO */
+.hero{background:var(--ink);color:#fff;padding:88px 0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(192,57,43,.15),transparent 60%)}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:4px 14px;border-radius:99px;margin-bottom:24px}
+.hero-title{font-family:var(--display);font-size:clamp(52px,8vw,100px);line-height:.9;letter-spacing:.02em;color:#fff;text-transform:uppercase;margin-bottom:24px}
+.hero-title em{color:var(--red);font-style:normal}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.6);max-width:560px;line-height:1.7;margin-bottom:36px}
+.hero-chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:11px;font-weight:700;padding:5px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.7);letter-spacing:.04em}
+.chip.live{background:rgba(22,163,74,.2);border-color:rgba(22,163,74,.4);color:#86efac}
+.chip.beta{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.4);color:#fca5a5}
+.chip.oss{background:rgba(180,83,9,.2);border-color:rgba(180,83,9,.4);color:#fcd34d}
+
+/* PRODUCT HERO CARDS */
+.prod-hero{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:48px}
+.phero{background:var(--surf);border:1px solid var(--brd);border-radius:var(--rx);overflow:hidden;box-shadow:var(--sh);display:flex;flex-direction:column}
+.phero-top{padding:28px 28px 20px;flex:1}
+.phero-bar{height:5px}
+.phero-bar.red{background:var(--red)}
+.phero-bar.grn{background:var(--grn)}
+.phero-bar.amb{background:var(--amb)}
+.phero-bar.blu{background:var(--blu)}
+.phero-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;margin-top:16px}
+.phero-name{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--ink)}
+.badge{font-size:10px;font-weight:800;padding:4px 12px;border-radius:99px;letter-spacing:.06em;text-transform:uppercase}
+.badge.live{background:var(--grn-s);color:var(--grn)}
+.badge.oss{background:var(--amb-s);color:var(--amb)}
+.badge.beta{background:var(--red-s);color:var(--red)}
+.phero-tag{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
+.phero-desc{font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:16px}
+.phero-quote{font-size:12px;color:var(--ink3);font-style:italic;border-left:3px solid var(--brd);padding-left:12px;line-height:1.65;margin-bottom:16px}
+.phero-tags{display:flex;gap:6px;flex-wrap:wrap}
+.ptag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;background:var(--surf2);border:1px solid var(--brd);color:var(--ink3);letter-spacing:.03em}
+.phero-bottom{padding:16px 28px 20px;border-top:1px solid var(--brd);background:var(--surf2)}
+.phero-stat-row{display:flex;gap:20px}
+.phero-stat{flex:1}
+.phero-stat-n{font-family:var(--display);font-size:28px;letter-spacing:.03em;color:var(--ink);line-height:1}
+.phero-stat-l{font-size:11px;color:var(--ink3);margin-top:2px;font-weight:500}
+
+/* DEEP DIVE */
+.deep-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:32px}
+.deep-card{background:var(--surf);border:1px solid var(--brd);border-radius:var(--rx);padding:28px;box-shadow:var(--sh)}
+.deep-label{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
+.deep-title{font-size:18px;font-weight:900;color:var(--ink);margin-bottom:12px;letter-spacing:-.01em}
+.deep-body{font-size:14px;color:var(--ink2);line-height:1.7}
+.deep-body strong{color:var(--ink);font-weight:700}
+
+/* COMPARISON */
+.comp-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.comp-table th{text-align:left;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:10px 16px;border-bottom:2px solid var(--brd);background:var(--surf2)}
+.comp-table td{padding:12px 16px;border-bottom:1px solid var(--brd);color:var(--ink2);vertical-align:top}
+.comp-table td:first-child{font-weight:700;color:var(--ink)}
+.comp-table tr:last-child td{border-bottom:0}
+.comp-table tr:hover td{background:var(--surf2)}
+.yes{color:var(--grn);font-weight:800}
+.no{color:var(--red);font-weight:800}
+.part{color:var(--amb);font-weight:800}
+
+/* ARCH DIAGRAM */
+.arch{background:var(--ink);border-radius:var(--rx);padding:36px;overflow:hidden;position:relative;margin-bottom:24px}
+.arch::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(192,57,43,.12),transparent 55%)}
+.arch-title{font-family:var(--display);font-size:24px;letter-spacing:.05em;color:#fff;margin-bottom:24px;position:relative}
+.arch-row{display:grid;gap:2px;position:relative}
+.arch-row.cols3{grid-template-columns:repeat(3,1fr)}
+.arch-row.cols4{grid-template-columns:repeat(4,1fr)}
+.arch-row.cols2{grid-template-columns:repeat(2,1fr)}
+.arch-cell{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:14px 16px;text-align:center}
+.arch-cell.hl{background:rgba(192,57,43,.2);border-color:rgba(192,57,43,.4)}
+.arch-cell.hl2{background:rgba(22,163,74,.15);border-color:rgba(22,163,74,.35)}
+.arch-cell.hl3{background:rgba(180,83,9,.15);border-color:rgba(180,83,9,.35)}
+.arch-cell-n{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:5px}
+.arch-cell-v{font-size:13px;font-weight:700;color:#fff;line-height:1.4}
+.arch-arrow{text-align:center;padding:6px 0;color:rgba(255,255,255,.3);font-size:18px;font-weight:300}
+.arch-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);text-align:center;padding:8px 0 4px}
+
+/* HOW IT WORKS */
+.how-steps{display:flex;gap:0;position:relative;margin-bottom:32px}
+.how-steps::before{content:'';position:absolute;top:28px;left:28px;right:28px;height:2px;background:linear-gradient(90deg,var(--red),var(--amb),var(--grn));z-index:0}
+.how-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;padding:0 12px}
+.how-dot{width:56px;height:56px;border-radius:50%;background:var(--surf);border:2px solid var(--brd);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:24px;color:var(--red);margin-bottom:16px;box-shadow:var(--sh)}
+.how-title{font-size:13px;font-weight:800;color:var(--ink);margin-bottom:6px}
+.how-body{font-size:12px;color:var(--ink2);line-height:1.55}
+
+/* PORTFOLIO GRID */
+.portfolio-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+.port-card{background:var(--surf);border:1px solid var(--brd);border-radius:var(--r);padding:20px;box-shadow:var(--sh);position:relative;overflow:hidden}
+.port-dot{width:10px;height:10px;border-radius:50%;margin-bottom:12px}
+.port-dot.red{background:var(--red)}
+.port-dot.grn{background:var(--grn)}
+.port-dot.amb{background:var(--amb)}
+.port-dot.blu{background:var(--blu)}
+.port-name{font-size:15px;font-weight:900;color:var(--ink);margin-bottom:4px}
+.port-type{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.port-desc{font-size:12px;color:var(--ink2);line-height:1.55}
+
+/* RESPONSIVE */
+@media(max-width:720px){
+  .prod-hero,.deep-grid,.how-steps,.portfolio-strip{grid-template-columns:1fr;flex-direction:column}
+  .how-steps::before{display:none}
+  .arch-row.cols3,.arch-row.cols4{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="hdr">
+  <div class="w">
+    <div class="hdr-inner">
+      <a href="index.html" class="btn-back">← Home</a>
+      <div class="logo">THINK<em>41</em></div>
+      <div class="pills-wrap">
+        <div class="pills">
+          <a class="pill" href="#overview">Overview</a>
+          <a class="pill" href="#extrasuite">ExtraSuite</a>
+          <a class="pill" href="#foundation">Foundation Voice</a>
+          <a class="pill" href="#mindlap">Mindlap</a>
+          <a class="pill" href="#dev41">Dev41</a>
+          <a class="pill" href="#portfolio">Portfolio</a>
+        </div>
+      </div>
+      <button class="btn-theme" onclick="toggleTheme()">☀︎ / ☾</button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="overview">
+  <div class="w">
+    <div class="hero-eyebrow">Product Portfolio · June 2026</div>
+    <div class="hero-title">4 PRODUCTS.<br><em>ZERO HYPE.</em></div>
+    <p class="hero-sub">Think41 has shipped four production-grade GenAI products in 18 months. Two are open-source. One has 225+ engineers on its waitlist. One generates Fortune 500 revenue. Here's what they actually do.</p>
+    <div class="hero-chips">
+      <span class="chip live">ExtraSuite · Live</span>
+      <span class="chip oss">Foundation Voice · OSS</span>
+      <span class="chip beta">Mindlap · Beta</span>
+      <span class="chip live">Dev41 · Revenue</span>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO STRIP -->
+<section id="portfolio" style="padding:40px 0">
+  <div class="w">
+    <div class="portfolio-strip">
+      <div class="port-card">
+        <div class="port-dot red"></div>
+        <div class="port-name">ExtraSuite</div>
+        <div class="port-type">Open Source · Live</div>
+        <div class="port-desc">AI execution layer for Google Workspace. Lets agents write back into Gmail, Docs, Sheets with enterprise governance.</div>
+      </div>
+      <div class="port-card">
+        <div class="port-dot grn"></div>
+        <div class="port-name">Foundation Voice</div>
+        <div class="port-type">Open Source · Live</div>
+        <div class="port-desc">Enterprise voice AI platform. SIP calling, CRM sync, cloud or on-prem. One of India's first OSS enterprise voice AI.</div>
+      </div>
+      <div class="port-card">
+        <div class="port-dot amb"></div>
+        <div class="port-name">Mindlap</div>
+        <div class="port-type">Private Beta</div>
+        <div class="port-desc">AI agent orchestrator for engineering workflows. 5× agent hours per human. 225+ engineers on waitlist.</div>
+      </div>
+      <div class="port-card">
+        <div class="port-dot blu"></div>
+        <div class="port-name">Dev41 + Autopods</div>
+        <div class="port-type">Proprietary · Revenue</div>
+        <div class="port-desc">AI-driven engineering delivery pods. Human + AI agent hybrid units. Fortune 500 clients. Think41's commercial engine.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRASUITE -->
+<section id="extrasuite">
+  <div class="w">
+    <div class="eyebrow">Product 01</div>
+    <div class="billboard">EXTRA<em>SUITE.</em></div>
+    <p class="section-sub">The AI execution layer that makes Google Workspace actually intelligent. Not a chatbot. Not a plugin. A production-grade infrastructure layer that lets AI agents safely read, reason, and write back into enterprise systems.</p>
+
+    <div class="prod-hero">
+      <div class="phero">
+        <div class="phero-bar red"></div>
+        <div class="phero-top">
+          <div class="phero-meta">
+            <div class="phero-name">ExtraSuite</div>
+            <span class="badge live">LIVE</span>
+          </div>
+          <div class="phero-tag">Open Source · Launched March 17, 2026 · extrasuite.think41.com</div>
+          <div class="phero-desc">ExtraSuite solves the last-mile problem in enterprise AI: the model can generate content, but can't safely write it back into the system of record. ExtraSuite gives AI agents a governed, auditable identity inside Google Workspace — so they can act, not just advise.</div>
+          <div class="phero-quote">"Many AI projects fail at the same point: the model can generate content, but cannot reliably write it back into the system of record." — Sripathi Krishnan, Co-Founder</div>
+          <div class="phero-tags">
+            <span class="ptag">Gmail</span><span class="ptag">Docs</span><span class="ptag">Sheets</span>
+            <span class="ptag">Slides</span><span class="ptag">Calendar</span><span class="ptag">Claude</span>
+            <span class="ptag">Codex</span><span class="ptag">Gemini</span><span class="ptag">Open Source</span>
+          </div>
+        </div>
+        <div class="phero-bottom">
+          <div class="phero-stat-row">
+            <div class="phero-stat"><div class="phero-stat-n">100+</div><div class="phero-stat-l">Workflows run internally daily by Think41 team</div></div>
+            <div class="phero-stat"><div class="phero-stat-n">Mar '26</div><div class="phero-stat-l">Public launch date</div></div>
+            <div class="phero-stat"><div class="phero-stat-n">OSS</div><div class="phero-stat-l">Fully open source on GitHub</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phero">
+        <div class="phero-bar red"></div>
+        <div class="phero-top">
+          <div class="phero-meta" style="margin-top:16px">
+            <div class="phero-name" style="font-size:16px">The Problem It Solves</div>
+          </div>
+          <div class="phero-desc">Enterprise teams are stuck in a loop: AI can analyse and suggest, but a human still has to copy the output into the actual tool. ExtraSuite breaks this loop.</div>
+          <div class="how-steps" style="margin-top:20px;margin-bottom:20px">
+            <div class="how-step">
+              <div class="how-dot">1</div>
+              <div class="how-title">AI Reads Context</div>
+              <div class="how-body">Agent reads Gmail threads, Docs, Calendar with scoped OAuth — only what it needs</div>
+            </div>
+            <div class="how-step">
+              <div class="how-dot">2</div>
+              <div class="how-title">AI Reasons + Acts</div>
+              <div class="how-body">LLM (Claude, Gemini, Codex) generates the output — draft reply, updated doc, new sheet row</div>
+            </div>
+            <div class="how-step">
+              <div class="how-dot">3</div>
+              <div class="how-title">Governed Write-Back</div>
+              <div class="how-body">ExtraSuite writes back under a service account — audit trail in Google version history</div>
+            </div>
+          </div>
+        </div>
+        <div class="phero-bottom">
+          <div class="phero-stat-row">
+            <div class="phero-stat"><div class="phero-stat-n" style="color:var(--red)">Service</div><div class="phero-stat-l">Account-per-user identity isolation</div></div>
+            <div class="phero-stat"><div class="phero-stat-n" style="color:var(--red)">Scoped</div><div class="phero-stat-l">OAuth tokens — least-privilege access</div></div>
+            <div class="phero-stat"><div class="phero-stat-n" style="color:var(--red)">Full</div><div class="phero-stat-l">Audit trail in Google version history</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arch">
+      <div class="arch-title">EXTRASUITE ARCHITECTURE</div>
+      <div class="arch-label">AI AGENTS (INPUT)</div>
+      <div class="arch-row cols3" style="margin-bottom:2px">
+        <div class="arch-cell"><div class="arch-cell-n">Agent</div><div class="arch-cell-v">Claude / Anthropic</div></div>
+        <div class="arch-cell"><div class="arch-cell-n">Agent</div><div class="arch-cell-v">OpenAI Codex</div></div>
+        <div class="arch-cell"><div class="arch-cell-n">Agent</div><div class="arch-cell-v">Google Gemini</div></div>
+      </div>
+      <div class="arch-arrow">↓</div>
+      <div class="arch-label">EXTRASUITE GOVERNANCE LAYER</div>
+      <div class="arch-row cols3" style="margin-bottom:2px">
+        <div class="arch-cell hl"><div class="arch-cell-n">Identity</div><div class="arch-cell-v">Service Account per User</div></div>
+        <div class="arch-cell hl"><div class="arch-cell-n">Access</div><div class="arch-cell-v">Scoped OAuth Tokens</div></div>
+        <div class="arch-cell hl"><div class="arch-cell-n">Audit</div><div class="arch-cell-v">Version History Trail</div></div>
+      </div>
+      <div class="arch-arrow">↓</div>
+      <div class="arch-label">GOOGLE WORKSPACE (WRITE TARGETS)</div>
+      <div class="arch-row cols4">
+        <div class="arch-cell hl2"><div class="arch-cell-n">App</div><div class="arch-cell-v">Gmail</div></div>
+        <div class="arch-cell hl2"><div class="arch-cell-n">App</div><div class="arch-cell-v">Docs + Slides</div></div>
+        <div class="arch-cell hl2"><div class="arch-cell-n">App</div><div class="arch-cell-v">Sheets</div></div>
+        <div class="arch-cell hl2"><div class="arch-cell-n">App</div><div class="arch-cell-v">Calendar</div></div>
+      </div>
+    </div>
+
+    <div class="deep-grid">
+      <div class="deep-card">
+        <div class="deep-label">Why It Matters</div>
+        <div class="deep-title">The Last-Mile Problem in Enterprise AI</div>
+        <div class="deep-body">Most enterprise AI deployments stop at the edge of the actual system. The AI advises. The human executes. This is the "last mile" — and it's where productivity gains evaporate. <strong>ExtraSuite closes the last mile.</strong> The agent doesn't just generate — it acts, inside the tool, under the company's governance policies.</div>
+      </div>
+      <div class="deep-card">
+        <div class="deep-label">Why Open Source</div>
+        <div class="deep-title">Trust Through Transparency</div>
+        <div class="deep-body">Enterprise IT teams don't deploy black-box AI to core workflows. <strong>Open source removes the trust barrier</strong> — security teams can audit the code, compliance teams can verify the governance model, and developers can extend it. This is the right architecture for an enterprise play.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDATION VOICE -->
+<section id="foundation">
+  <div class="w">
+    <div class="eyebrow grn">Product 02</div>
+    <div class="billboard" style="--red:var(--grn)">FOUNDATION<em style="color:var(--grn)">VOICE.</em></div>
+    <p class="section-sub">Enterprise voice AI built for production — not demos. SIP calling, CRM sync, on-prem or cloud. One of the first enterprise voice AI platforms open-sourced in India.</p>
+
+    <div class="prod-hero">
+      <div class="phero">
+        <div class="phero-bar grn"></div>
+        <div class="phero-top">
+          <div class="phero-meta">
+            <div class="phero-name">Foundation Voice</div>
+            <span class="badge oss">OPEN SOURCE</span>
+          </div>
+          <div class="phero-tag">Open Source · Launched June 2025</div>
+          <div class="phero-desc">Foundation Voice is an enterprise-grade voice AI platform that goes beyond chatbots — it handles real telephony (SIP), connects to enterprise CRMs, runs on-prem or in cloud, and is built to production standards that enterprise security teams actually sign off on.</div>
+          <div class="phero-quote">"Think41 Joins India's Open-Source AI Movement" — PR Newswire, June 2025</div>
+          <div class="phero-tags">
+            <span class="ptag">SIP Calling</span><span class="ptag">CRM Sync</span><span class="ptag">On-Prem</span>
+            <span class="ptag">Cloud</span><span class="ptag">Microsoft</span><span class="ptag">Deepgram</span>
+            <span class="ptag">ElevenLabs</span><span class="ptag">Smallest.ai</span>
+          </div>
+        </div>
+        <div class="phero-bottom">
+          <div class="phero-stat-row">
+            <div class="phero-stat"><div class="phero-stat-n" style="color:var(--grn)">Jun '25</div><div class="phero-stat-l">Open-sourced — India's first enterprise voice AI OSS</div></div>
+            <div class="phero-stat"><div class="phero-stat-n">4</div><div class="phero-stat-l">Enterprise AI partners integrated</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phero">
+        <div class="phero-bar grn"></div>
+        <div class="phero-top" style="margin-top:16px">
+          <div class="arch" style="margin-top:0">
+            <div class="arch-title" style="font-size:18px;margin-bottom:18px">VOICE AI STACK</div>
+            <div class="arch-row cols2" style="margin-bottom:2px">
+              <div class="arch-cell"><div class="arch-cell-n">Transport</div><div class="arch-cell-v">SIP / PSTN Calling</div></div>
+              <div class="arch-cell"><div class="arch-cell-n">STT</div><div class="arch-cell-v">Deepgram</div></div>
+            </div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-row cols2" style="margin-bottom:2px">
+              <div class="arch-cell hl"><div class="arch-cell-n">LLM</div><div class="arch-cell-v">Foundation Voice Core</div></div>
+              <div class="arch-cell hl"><div class="arch-cell-n">TTS</div><div class="arch-cell-v">ElevenLabs / Smallest.ai</div></div>
+            </div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-row cols2">
+              <div class="arch-cell hl2"><div class="arch-cell-n">CRM</div><div class="arch-cell-v">Sync + Logging</div></div>
+              <div class="arch-cell hl2"><div class="arch-cell-n">Deploy</div><div class="arch-cell-v">Cloud or On-Prem</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="deep-grid">
+      <div class="deep-card">
+        <div class="deep-label">The Problem</div>
+        <div class="deep-title">Voice AI That's Actually Enterprise-Ready</div>
+        <div class="deep-body">Most voice AI tools are consumer demos — they break under real enterprise load, can't integrate with CRM, and don't pass enterprise security reviews. <strong>Foundation Voice is built for the opposite environment:</strong> production telephony, compliance-ready deployment, auditable CRM integration.</div>
+      </div>
+      <div class="deep-card">
+        <div class="deep-label">Partners</div>
+        <div class="deep-title">Built With the Best in the Stack</div>
+        <div class="deep-body"><strong>Microsoft</strong> — enterprise cloud and compliance ecosystem. <strong>Deepgram</strong> — enterprise-grade speech-to-text. <strong>ElevenLabs</strong> — highest-quality text-to-speech. <strong>Smallest.ai</strong> — low-latency voice synthesis. Foundation Voice orchestrates all four into one production-ready platform.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MINDLAP -->
+<section id="mindlap">
+  <div class="w">
+    <div class="eyebrow amb">Product 03</div>
+    <div class="billboard" style="--red:var(--amb)">MIND<em style="color:var(--amb)">LAP.</em></div>
+    <p class="section-sub">An AI agent orchestrator that makes engineering teams 5× more effective. Not a copilot. Not a code assistant. A multi-agent coordination layer that runs complex workflows autonomously, 24/7.</p>
+
+    <div class="prod-hero">
+      <div class="phero">
+        <div class="phero-bar amb"></div>
+        <div class="phero-top">
+          <div class="phero-meta">
+            <div class="phero-name">Mindlap</div>
+            <span class="badge beta">BETA</span>
+          </div>
+          <div class="phero-tag">Private Beta · 225+ Engineers on Waitlist · mindlap.ai</div>
+          <div class="phero-desc">Mindlap's "Omni" orchestrator coordinates multiple AI agents across complex engineering workflows — from requirements to review to deployment. It doesn't just assist engineers; it acts as a parallel engineering capacity that never sleeps.</div>
+          <div class="phero-tags">
+            <span class="ptag">Multi-Agent</span><span class="ptag">Dev Orchestration</span>
+            <span class="ptag">24/7 Autonomous</span><span class="ptag">Code Review</span>
+            <span class="ptag">mindlap.ai</span>
+          </div>
+        </div>
+        <div class="phero-bottom">
+          <div class="phero-stat-row">
+            <div class="phero-stat"><div class="phero-stat-n" style="color:var(--amb)">5×</div><div class="phero-stat-l">Agent hours per human engineer</div></div>
+            <div class="phero-stat"><div class="phero-stat-n" style="color:var(--amb)">50%</div><div class="phero-stat-l">Reduction in code review time</div></div>
+            <div class="phero-stat"><div class="phero-stat-n" style="color:var(--amb)">225+</div><div class="phero-stat-l">Engineers on waitlist before launch</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phero">
+        <div class="phero-bar amb"></div>
+        <div class="phero-top" style="margin-top:16px">
+          <div class="arch" style="margin-top:0">
+            <div class="arch-title" style="font-size:18px;margin-bottom:18px">OMNI ORCHESTRATION</div>
+            <div class="arch-row cols2" style="margin-bottom:2px">
+              <div class="arch-cell"><div class="arch-cell-n">Input</div><div class="arch-cell-v">Engineering Requirement</div></div>
+              <div class="arch-cell"><div class="arch-cell-n">Input</div><div class="arch-cell-v">Existing Codebase Context</div></div>
+            </div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-cell hl" style="margin-bottom:2px"><div class="arch-cell-n">Orchestrator</div><div class="arch-cell-v">Mindlap "Omni" — Plans, delegates, reviews</div></div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-row cols3" style="margin-bottom:2px">
+              <div class="arch-cell hl3"><div class="arch-cell-n">Agent 1</div><div class="arch-cell-v">Code Generation</div></div>
+              <div class="arch-cell hl3"><div class="arch-cell-n">Agent 2</div><div class="arch-cell-v">Testing + QA</div></div>
+              <div class="arch-cell hl3"><div class="arch-cell-n">Agent 3</div><div class="arch-cell-v">Code Review</div></div>
+            </div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-cell hl2"><div class="arch-cell-n">Output</div><div class="arch-cell-v">Reviewed, tested code — ready for human sign-off</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout gold">
+      <strong>The signal:</strong> 225+ engineers joined the waitlist <mark>before Mindlap publicly launched</mark>. That's product-market fit before the product is even generally available. The community found it before Think41 marketed it.
+    </div>
+  </div>
+</section>
+
+<!-- DEV41 -->
+<section id="dev41">
+  <div class="w">
+    <div class="eyebrow blu">Product 04</div>
+    <div class="billboard" style="--red:var(--blu)">DEV41 +<em style="color:var(--blu)">AUTOPODS.</em></div>
+    <p class="section-sub">AI-driven engineering delivery. Not a staffing model. Not a consulting model. A hybrid human-plus-AI delivery pod that ships faster, costs less, and is already generating Fortune 500 revenue.</p>
+
+    <div class="prod-hero">
+      <div class="phero">
+        <div class="phero-bar blu"></div>
+        <div class="phero-top">
+          <div class="phero-meta">
+            <div class="phero-name">Dev41 + Autopods</div>
+            <span class="badge live">LIVE · REVENUE</span>
+          </div>
+          <div class="phero-tag">Proprietary · Fortune 500 Clients · Active Revenue</div>
+          <div class="phero-desc">Dev41 packages Think41's engineering delivery capability into AI-augmented pods — structured teams of human engineers working alongside AI agents. Each pod is accountable for outcomes, not hours. This is Think41's primary commercial engine, already generating revenue from enterprise clients.</div>
+          <div class="phero-tags">
+            <span class="ptag">Proprietary</span><span class="ptag">Enterprise</span>
+            <span class="ptag">Fortune 500</span><span class="ptag">AI + Human Hybrid</span>
+            <span class="ptag">Boot41 Talent</span>
+          </div>
+        </div>
+        <div class="phero-bottom">
+          <div class="phero-stat-row">
+            <div class="phero-stat"><div class="phero-stat-n" style="color:var(--blu)">Live</div><div class="phero-stat-l">Revenue-generating with Fortune 500 clients</div></div>
+            <div class="phero-stat"><div class="phero-stat-n">Boot41</div><div class="phero-stat-l">Internal talent programme feeding pod pipeline</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phero">
+        <div class="phero-bar blu"></div>
+        <div class="phero-top" style="margin-top:16px">
+          <div class="arch" style="margin-top:0">
+            <div class="arch-title" style="font-size:18px;margin-bottom:18px">AUTOPOD STRUCTURE</div>
+            <div class="arch-cell" style="margin-bottom:2px"><div class="arch-cell-n">Client</div><div class="arch-cell-v">Fortune 500 Engineering Requirement</div></div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-cell hl" style="margin-bottom:2px"><div class="arch-cell-n">Autopod</div><div class="arch-cell-v">Lead Engineer (Human) + AI Agent Layer</div></div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-row cols3" style="margin-bottom:2px">
+              <div class="arch-cell hl2"><div class="arch-cell-n">Human</div><div class="arch-cell-v">Architecture + Decisions</div></div>
+              <div class="arch-cell hl2"><div class="arch-cell-n">AI</div><div class="arch-cell-v">Execution + Code Gen</div></div>
+              <div class="arch-cell hl2"><div class="arch-cell-n">AI</div><div class="arch-cell-v">QA + Review</div></div>
+            </div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-cell"><div class="arch-cell-n">Outcome</div><div class="arch-cell-v">Faster delivery · Lower cost · Outcome accountability</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="deep-grid">
+      <div class="deep-card">
+        <div class="deep-label">The Model</div>
+        <div class="deep-title">Not Staffing. Not Consulting. Delivery.</div>
+        <div class="deep-body">Traditional IT consulting bills hours. Dev41 bills outcomes. Each Autopod is a self-contained delivery unit — <strong>human architects + AI executors</strong> — accountable to shipping working software, not filling timesheets. This is what makes it economically disruptive to the legacy IT services model.</div>
+      </div>
+      <div class="deep-card">
+        <div class="deep-label">Boot41</div>
+        <div class="deep-title">The Talent Engine Behind the Pods</div>
+        <div class="deep-body">Boot41 is Think41's internal talent accelerator — engineers trained in AI-first delivery methodologies who graduate into Autopods. <strong>It's a proprietary pipeline</strong> that gives Think41 a structural cost advantage over competitors who recruit from the same external market at the same rates.</div>
+      </div>
+    </div>
+
+    <div class="callout blue">
+      <strong>The competitive moat:</strong> Dev41 + Autopods is the only Think41 product that doesn't need marketing to generate revenue — <mark>enterprise clients are already paying</mark>. The job of marketing is to surface this proof to buyers who haven't heard of Think41 yet.
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section>
+  <div class="w">
+    <div class="eyebrow">Side by Side</div>
+    <div class="billboard">HOW THEY<em>COMPARE.</em></div>
+    <p class="section-sub">Four products. Different audiences. Different models. Same underlying philosophy: production-grade GenAI that works in the real enterprise world.</p>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Product</th><th>Audience</th><th>Model</th><th>Open Source</th><th>Revenue</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ExtraSuite</td>
+          <td>Enterprise IT / Ops teams using Google Workspace</td>
+          <td>OSS core + enterprise services</td>
+          <td class="yes">✓ Yes</td>
+          <td class="part">↗ Growing</td>
+          <td><span class="badge live">LIVE</span></td>
+        </tr>
+        <tr>
+          <td>Foundation Voice</td>
+          <td>Enterprise contact centre, BFSI, CX teams</td>
+          <td>OSS platform + implementation services</td>
+          <td class="yes">✓ Yes</td>
+          <td class="part">↗ Services</td>
+          <td><span class="badge oss">LIVE OSS</span></td>
+        </tr>
+        <tr>
+          <td>Mindlap</td>
+          <td>Engineering teams, CTOs, DevOps leads</td>
+          <td>SaaS subscription (post-launch)</td>
+          <td class="no">✗ No</td>
+          <td class="part">↗ Waitlist</td>
+          <td><span class="badge beta">BETA</span></td>
+        </tr>
+        <tr>
+          <td>Dev41 + Autopods</td>
+          <td>Fortune 500 enterprise engineering buyers</td>
+          <td>Outcome-based delivery contracts</td>
+          <td class="no">✗ No</td>
+          <td class="yes">✓ Active</td>
+          <td><span class="badge live">LIVE</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div style="text-align:center;padding:40px 0;font-size:11px;color:var(--ink3);border-top:1px solid var(--brd);letter-spacing:.08em;text-transform:uppercase">
+  Think41 Product Explainer · June 2026 · For Discussion Purposes
+</div>
+
+<script>
+function toggleTheme(){
+  const h=document.documentElement;
+  const t=h.getAttribute('data-theme')==='dark'?'light':'dark';
+  h.setAttribute('data-theme',t);
+  localStorage.setItem('t41pe-theme',t);
+}
+(function(){const s=localStorage.getItem('t41pe-theme');if(s)document.documentElement.setAttribute('data-theme',s)})();
+const pills=document.querySelectorAll('.pill[href]');
+const secs=document.querySelectorAll('section[id],div[id]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)pills.forEach(p=>p.classList.toggle('active',p.getAttribute('href')==='#'+e.target.id));
+  });
+},{rootMargin:'-30% 0px -60% 0px'});
+secs.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

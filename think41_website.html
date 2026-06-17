@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Think41 — Enterprise GenAI solutions that work in production. AI agents, voice AI, and engineering delivery pods for Fortune 500 companies."/>
+<meta name="keywords" content="enterprise AI, GenAI, AI agents, voice AI, Google Workspace AI, engineering automation, Think41"/>
+<title>Think41 — Enterprise GenAI. Built for Production.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0908;--surf:#111009;--surf2:#18160f;--surf3:#1e1c14;--brd:rgba(255,255,255,.08);
+  --ink:#f0ece2;--ink2:#a09880;--ink3:#6a6250;
+  --red:#e84040;--red-d:#c0392b;
+  --grn:#22c55e;--amb:#f59e0b;--blu:#60a5fa;
+  --gold:#c9a84c;
+  --font:'Inter',system-ui,sans-serif;--display:'Bebas Neue',Impact,sans-serif;
+  --r:10px;--rx:16px;--sh:0 2px 16px rgba(0,0,0,.4);--sh2:0 12px 60px rgba(0,0,0,.6);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.w{width:min(1080px,calc(100% - 3rem));margin-inline:auto}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:.9rem 0;border-bottom:1px solid var(--brd);background:rgba(10,9,8,.85);backdrop-filter:blur(24px)}
+.nav-inner{display:flex;align-items:center;gap:20px}
+.nav-logo{font-family:var(--display);font-size:26px;letter-spacing:.06em;color:#fff;flex-shrink:0}
+.nav-logo span{color:var(--red)}
+.nav-links{display:flex;gap:2px;flex:1}
+.nav-link{font-size:13px;font-weight:600;color:var(--ink2);padding:6px 14px;border-radius:8px;transition:all .15s;letter-spacing:.01em}
+.nav-link:hover{color:#fff;background:rgba(255,255,255,.06)}
+.nav-cta{font-size:13px;font-weight:800;padding:8px 20px;border-radius:99px;background:var(--red);color:#fff;letter-spacing:.02em;transition:all .15s;flex-shrink:0}
+.nav-cta:hover{background:#ff5555;transform:translateY(-1px);box-shadow:0 4px 20px rgba(232,64,64,.4)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:100px 0 60px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg svg{position:absolute;inset:0;width:100%;height:100%;opacity:.18}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:70%;height:80%;background:radial-gradient(ellipse,rgba(232,64,64,.15) 0%,transparent 60%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-10%;left:-10%;width:50%;height:60%;background:radial-gradient(ellipse,rgba(96,165,250,.08) 0%,transparent 60%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(232,64,64,.12);border:1px solid rgba(232,64,64,.3);padding:5px 16px;border-radius:99px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:28px}
+.hero-title{font-family:var(--display);font-size:clamp(52px,6vw,82px);line-height:.9;letter-spacing:.02em;color:#fff;text-transform:uppercase;margin-bottom:28px}
+.hero-title em{color:var(--red);font-style:normal}
+.hero-sub{font-size:17px;color:var(--ink2);line-height:1.75;margin-bottom:36px;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-hero-p{font-size:14px;font-weight:800;padding:14px 28px;border-radius:99px;background:var(--red);color:#fff;transition:all .2s}
+.btn-hero-p:hover{background:#ff5555;transform:translateY(-2px);box-shadow:0 6px 24px rgba(232,64,64,.4)}
+.btn-hero-s{font-size:14px;font-weight:700;padding:14px 28px;border-radius:99px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);transition:all .2s}
+.btn-hero-s:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.4)}
+
+/* TICKER */
+.ticker{overflow:hidden;background:var(--red);padding:10px 0}
+.ticker-inner{display:flex;gap:0;white-space:nowrap;animation:tick 30s linear infinite}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;padding:0 32px}
+.ticker-sep{color:rgba(255,255,255,.4);padding:0}
+
+/* STATS */
+.stats{padding:72px 0;border-bottom:1px solid var(--brd)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--brd);border:1px solid var(--brd);border-radius:var(--rx);overflow:hidden}
+.stat-box{background:var(--surf);padding:32px 28px}
+.stat-n{font-family:var(--display);font-size:52px;line-height:1;letter-spacing:.03em;color:#fff;margin-bottom:8px}
+.stat-n em{color:var(--red);font-style:normal}
+.stat-l{font-size:13px;color:var(--ink2);line-height:1.55}
+
+/* SECTION */
+section{padding:80px 0;border-bottom:1px solid var(--brd)}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);background:rgba(232,64,64,.1);border:1px solid rgba(232,64,64,.2);padding:4px 14px;border-radius:99px;margin-bottom:18px}
+.eyebrow.grn{color:var(--grn);background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.2)}
+.eyebrow.amb{color:var(--amb);background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.2)}
+.eyebrow.blu{color:var(--blu);background:rgba(96,165,250,.1);border-color:rgba(96,165,250,.2)}
+.eyebrow.gold{color:var(--gold);background:rgba(201,168,76,.1);border-color:rgba(201,168,76,.2)}
+.billboard{font-family:var(--display);font-size:clamp(40px,5vw,70px);line-height:.93;letter-spacing:.02em;color:#fff;text-transform:uppercase;margin-bottom:20px}
+.billboard em{color:var(--red);font-style:normal}
+.section-sub{font-size:16px;color:var(--ink2);max-width:600px;line-height:1.75}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.founder-card{background:var(--surf2);border:1px solid var(--brd);border-radius:var(--rx);padding:24px;position:relative;overflow:hidden}
+.founder-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.founder-card:nth-child(1)::before{background:var(--red)}
+.founder-card:nth-child(2)::before{background:var(--blu)}
+.founder-card:nth-child(3)::before{background:var(--grn)}
+.founder-card:nth-child(4)::before{background:var(--amb)}
+.founder-av{width:48px;height:48px;border-radius:50%;background:var(--surf3);border:2px solid var(--brd);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:22px;color:var(--ink2);margin-bottom:14px}
+.founder-name{font-size:15px;font-weight:800;color:#fff;margin-bottom:2px}
+.founder-title{font-size:11px;color:var(--ink3);font-weight:600;letter-spacing:.04em;margin-bottom:10px}
+.founder-co{font-size:11px;color:var(--ink3)}
+.founder-co strong{color:var(--ink2)}
+
+/* PRODUCTS */
+.prods-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.prod-card{background:var(--surf);border:1px solid var(--brd);border-radius:var(--rx);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.prod-card:hover{transform:translateY(-4px);box-shadow:var(--sh2)}
+.prod-top{padding:28px 28px 20px;position:relative;overflow:hidden;min-height:240px}
+.prod-svg-bg{position:absolute;inset:0;opacity:.06}
+.prod-badge{font-size:10px;font-weight:800;padding:4px 12px;border-radius:99px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px;display:inline-block}
+.prod-badge.live{background:rgba(34,197,94,.15);color:var(--grn);border:1px solid rgba(34,197,94,.3)}
+.prod-badge.oss{background:rgba(245,158,11,.15);color:var(--amb);border:1px solid rgba(245,158,11,.3)}
+.prod-badge.beta{background:rgba(96,165,250,.15);color:var(--blu);border:1px solid rgba(96,165,250,.3)}
+.prod-badge.revenue{background:rgba(232,64,64,.15);color:var(--red);border:1px solid rgba(232,64,64,.3)}
+.prod-icon{font-size:32px;margin-bottom:14px;display:block}
+.prod-name{font-size:22px;font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-.01em}
+.prod-cat{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px}
+.prod-desc{font-size:14px;color:var(--ink2);line-height:1.7}
+.prod-bottom{padding:16px 28px 20px;border-top:1px solid var(--brd);background:var(--surf2);display:flex;justify-content:space-between;align-items:center}
+.prod-stats{display:flex;gap:20px}
+.ps-n{font-family:var(--display);font-size:26px;color:#fff;line-height:1}
+.ps-l{font-size:10px;color:var(--ink3);margin-top:2px;font-weight:500}
+.prod-link{font-size:12px;font-weight:800;color:var(--red);letter-spacing:.04em}
+.prod-link:hover{color:#ff5555}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc-card{background:var(--surf);border:1px solid var(--brd);border-radius:var(--rx);padding:28px;transition:border-color .2s}
+.svc-card:hover{border-color:rgba(255,255,255,.2)}
+.svc-num{font-family:var(--display);font-size:48px;line-height:1;color:rgba(255,255,255,.06);margin-bottom:12px}
+.svc-name{font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
+.svc-desc{font-size:13px;color:var(--ink2);line-height:1.65}
+.svc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.svc-tag{font-size:10px;font-weight:700;padding:3px 10px;border-radius:5px;border:1px solid var(--brd);color:var(--ink3)}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.why-points{display:flex;flex-direction:column;gap:24px;margin-top:32px}
+.why-pt{display:flex;gap:16px}
+.why-dot{width:40px;height:40px;border-radius:50%;background:rgba(232,64,64,.12);border:1px solid rgba(232,64,64,.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:2px}
+.why-pt-t{font-size:15px;font-weight:800;color:#fff;margin-bottom:4px}
+.why-pt-d{font-size:13px;color:var(--ink2);line-height:1.65}
+.arch-vis{background:var(--surf2);border:1px solid var(--brd);border-radius:var(--rx);padding:28px;overflow:hidden}
+.arch-vis-title{font-family:var(--display);font-size:20px;letter-spacing:.05em;color:rgba(255,255,255,.5);margin-bottom:20px}
+.av-row{display:flex;gap:8px;margin-bottom:8px}
+.av-cell{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:12px 14px;font-size:12px;color:rgba(255,255,255,.4);font-weight:600;letter-spacing:.04em;text-align:center}
+.av-cell.hot{background:rgba(232,64,64,.1);border-color:rgba(232,64,64,.25);color:rgba(255,180,180,.7)}
+
+/* OSS */
+.oss-banner{background:var(--surf2);border:1px solid var(--brd);border-radius:var(--rx);padding:40px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.oss-vis{display:flex;flex-direction:column;gap:8px;min-width:220px}
+.oss-file{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:10px 14px;font-family:monospace;font-size:12px;color:var(--ink3);display:flex;align-items:center;gap:10px}
+.oss-file .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.oss-file .dot.r{background:var(--red)}
+.oss-file .dot.g{background:var(--grn)}
+.oss-file .dot.y{background:var(--amb)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.cform{background:var(--surf);border:1px solid var(--brd);border-radius:var(--rx);padding:36px}
+.cform-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:24px}
+.cform-field{margin-bottom:16px}
+.cform-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:6px}
+.cform-input{width:100%;background:var(--surf2);border:1px solid var(--brd);border-radius:8px;padding:12px 14px;font:14px var(--font);color:#fff;outline:none;transition:border-color .15s}
+.cform-input:focus{border-color:rgba(232,64,64,.5)}
+.cform-input::placeholder{color:var(--ink3)}
+textarea.cform-input{resize:vertical;min-height:100px}
+.cform-submit{width:100%;padding:14px;border-radius:99px;background:var(--red);color:#fff;font:700 14px var(--font);letter-spacing:.04em;cursor:pointer;border:0;transition:all .2s;margin-top:8px}
+.cform-submit:hover{background:#ff5555;transform:translateY(-1px)}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.ci-label{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+.ci-val{font-size:15px;color:#fff;font-weight:600}
+.ci-link{color:var(--red);font-size:15px;font-weight:600}
+.ci-link:hover{color:#ff5555}
+
+/* FOOTER */
+.footer{padding:48px 0 32px;border-top:1px solid var(--brd)}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-logo{font-family:var(--display);font-size:28px;letter-spacing:.06em;color:#fff;margin-bottom:12px}
+.footer-logo span{color:var(--red)}
+.footer-tagline{font-size:13px;color:var(--ink3);line-height:1.65;max-width:260px}
+.footer-col-title{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px}
+.footer-link{display:block;font-size:13px;color:var(--ink2);margin-bottom:8px;transition:color .15s}
+.footer-link:hover{color:#fff}
+.footer-bottom{border-top:1px solid var(--brd);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--ink3)}
+.fbadge{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:var(--grn);font-size:10px;font-weight:800;padding:3px 10px;border-radius:99px;letter-spacing:.04em}
+.fbadge.red{background:rgba(232,64,64,.1);border-color:rgba(232,64,64,.2);color:var(--red)}
+
+@media(max-width:800px){
+  .hero-inner,.about-grid,.why-grid,.contact-grid,.prods-grid{grid-template-columns:1fr}
+  .hero-vis{display:none}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .svc-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .oss-banner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="w">
+    <div class="nav-inner">
+      <div class="nav-logo">THINK<span>41</span></div>
+      <div class="nav-links">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#products">Products</a>
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#oss">Open Source</a>
+        <a class="nav-link" href="#why">Why Think41</a>
+      </div>
+      <a href="#contact" class="nav-cta">Talk to Us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="grid" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+          <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,1)" stroke-width=".5"/>
+        </pattern>
+        <radialGradient id="gridFade" cx="50%" cy="50%" r="70%">
+          <stop offset="0%" stop-color="white" stop-opacity="1"/>
+          <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </radialGradient>
+        <mask id="fadeM"><rect width="100%" height="100%" fill="url(#gridFade)"/></mask>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" mask="url(#fadeM)"/>
+      <g opacity=".3" stroke="rgba(232,64,64,1)" stroke-width="1.5" fill="none">
+        <path d="M 200 100 Q 400 50 600 150 Q 800 250 900 200" stroke-dasharray="6,4" opacity=".5"/>
+        <path d="M 100 300 Q 300 200 500 300 Q 700 400 900 350" stroke-dasharray="6,4" opacity=".4"/>
+      </g>
+      <g>
+        <circle cx="200" cy="100" r="5" fill="rgba(232,64,64,.6)"/>
+        <circle cx="500" cy="150" r="4" fill="rgba(232,64,64,.4)"/>
+        <circle cx="800" cy="200" r="6" fill="rgba(232,64,64,.7)"/>
+        <circle cx="300" cy="350" r="4" fill="rgba(96,165,250,.4)"/>
+        <circle cx="650" cy="280" r="5" fill="rgba(34,197,94,.5)"/>
+      </g>
+    </svg>
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+  </div>
+  <div class="w">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Enterprise GenAI · Production-Grade</div>
+        <h1 class="hero-title">AI THAT<br>ACTUALLY<br><em>SHIPS.</em></h1>
+        <p class="hero-sub">Think41 builds enterprise GenAI products that work in the real world — not in demos. From AI agents for Google Workspace to voice AI to engineering delivery pods. Fortune 500-ready. On-prem or cloud.</p>
+        <div class="hero-btns">
+          <a href="#products" class="btn-hero-p">See Our Products</a>
+          <a href="#contact" class="btn-hero-s">Talk to Us</a>
+        </div>
+      </div>
+      <div class="hero-vis">
+        <svg viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px">
+          <rect x="10" y="10" width="460" height="380" rx="16" fill="rgba(17,16,9,1)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+          <text x="30" y="44" font-family="'Bebas Neue', sans-serif" font-size="18" fill="rgba(255,255,255,.3)" letter-spacing="3">THINK41 AI ARCHITECTURE</text>
+          <text x="30" y="76" font-size="9" fill="rgba(255,255,255,.25)" font-weight="700" letter-spacing="2" font-family="Inter, sans-serif">ENTERPRISE INPUT</text>
+          <rect x="30" y="84" width="120" height="40" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <text x="90" y="100" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.5)" font-family="Inter, sans-serif" font-weight="600">Gmail / Docs</text>
+          <text x="90" y="114" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)" font-family="Inter, sans-serif">Google Workspace</text>
+          <rect x="165" y="84" width="120" height="40" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <text x="225" y="100" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.5)" font-family="Inter, sans-serif" font-weight="600">Voice / SIP</text>
+          <text x="225" y="114" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)" font-family="Inter, sans-serif">Telephony</text>
+          <rect x="300" y="84" width="150" height="40" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <text x="375" y="100" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.5)" font-family="Inter, sans-serif" font-weight="600">Codebase / PRD</text>
+          <text x="375" y="114" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)" font-family="Inter, sans-serif">Engineering Workflows</text>
+          <line x1="90" y1="124" x2="90" y2="148" stroke="rgba(255,255,255,.15)" stroke-width="1" stroke-dasharray="4,3"/>
+          <line x1="225" y1="124" x2="225" y2="148" stroke="rgba(255,255,255,.15)" stroke-width="1" stroke-dasharray="4,3"/>
+          <line x1="375" y1="124" x2="375" y2="148" stroke="rgba(255,255,255,.15)" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="30" y="144" font-size="9" fill="rgba(232,64,64,.5)" font-weight="700" letter-spacing="2" font-family="Inter, sans-serif">THINK41 PRODUCTS</text>
+          <rect x="30" y="152" width="120" height="48" rx="8" fill="rgba(232,64,64,.1)" stroke="rgba(232,64,64,.3)" stroke-width="1"/>
+          <text x="90" y="171" text-anchor="middle" font-size="11" fill="rgba(255,180,180,.9)" font-family="Inter, sans-serif" font-weight="800">ExtraSuite</text>
+          <text x="90" y="186" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)" font-family="Inter, sans-serif">Workspace AI</text>
+          <text x="90" y="197" text-anchor="middle" font-size="9" fill="rgba(34,197,94,.6)" font-family="Inter, sans-serif">● LIVE · OSS</text>
+          <rect x="165" y="152" width="120" height="48" rx="8" fill="rgba(96,165,250,.08)" stroke="rgba(96,165,250,.25)" stroke-width="1"/>
+          <text x="225" y="171" text-anchor="middle" font-size="11" fill="rgba(147,197,253,.9)" font-family="Inter, sans-serif" font-weight="800">Foundation Voice</text>
+          <text x="225" y="186" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)" font-family="Inter, sans-serif">Enterprise Voice AI</text>
+          <text x="225" y="197" text-anchor="middle" font-size="9" fill="rgba(34,197,94,.6)" font-family="Inter, sans-serif">● LIVE · OSS</text>
+          <rect x="300" y="152" width="150" height="48" rx="8" fill="rgba(245,158,11,.08)" stroke="rgba(245,158,11,.25)" stroke-width="1"/>
+          <text x="375" y="171" text-anchor="middle" font-size="11" fill="rgba(253,211,77,.9)" font-family="Inter, sans-serif" font-weight="800">Mindlap + Dev41</text>
+          <text x="375" y="186" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)" font-family="Inter, sans-serif">Agent Orchestration</text>
+          <text x="375" y="197" text-anchor="middle" font-size="9" fill="rgba(245,158,11,.7)" font-family="Inter, sans-serif">● BETA + REVENUE</text>
+          <line x1="90" y1="200" x2="240" y2="258" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <line x1="225" y1="200" x2="240" y2="258" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <line x1="375" y1="200" x2="240" y2="258" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <text x="30" y="252" font-size="9" fill="rgba(255,255,255,.25)" font-weight="700" letter-spacing="2" font-family="Inter, sans-serif">LLM INFERENCE</text>
+          <rect x="80" y="260" width="320" height="44" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+          <text x="240" y="278" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.6)" font-family="Inter, sans-serif" font-weight="700">Claude · GPT-4 · Gemini · Open Models</text>
+          <text x="240" y="294" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.25)" font-family="Inter, sans-serif">Multi-model, cloud or on-prem inference layer</text>
+          <line x1="240" y1="304" x2="240" y2="322" stroke="rgba(255,255,255,.15)" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="30" y="318" font-size="9" fill="rgba(255,255,255,.25)" font-weight="700" letter-spacing="2" font-family="Inter, sans-serif">ENTERPRISE OUTPUT</text>
+          <rect x="30" y="326" width="100" height="38" rx="8" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <text x="80" y="342" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.4)" font-family="Inter, sans-serif" font-weight="600">Writes to</text>
+          <text x="80" y="356" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)" font-family="Inter, sans-serif">Gmail · Docs</text>
+          <rect x="147" y="326" width="100" height="38" rx="8" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <text x="197" y="342" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.4)" font-family="Inter, sans-serif" font-weight="600">Calls + CRM</text>
+          <text x="197" y="356" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)" font-family="Inter, sans-serif">SIP · Salesforce</text>
+          <rect x="264" y="326" width="100" height="38" rx="8" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <text x="314" y="342" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.4)" font-family="Inter, sans-serif" font-weight="600">Shipped Code</text>
+          <text x="314" y="356" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)" font-family="Inter, sans-serif">Reviewed + Tested</text>
+          <rect x="381" y="326" width="79" height="38" rx="8" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <text x="420" y="342" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.4)" font-family="Inter, sans-serif" font-weight="600">Audit Trail</text>
+          <text x="420" y="356" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)" font-family="Inter, sans-serif">Compliance</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">ExtraSuite · Google Workspace AI</span><span class="ticker-sep"> · </span>
+    <span class="ticker-item">Foundation Voice · Enterprise Voice AI</span><span class="ticker-sep"> · </span>
+    <span class="ticker-item">Mindlap · 225+ Engineers on Waitlist</span><span class="ticker-sep"> · </span>
+    <span class="ticker-item">Dev41 Autopods · Fortune 500 Revenue</span><span class="ticker-sep"> · </span>
+    <span class="ticker-item">Open Source · India's First Enterprise Voice AI</span><span class="ticker-sep"> · </span>
+    <span class="ticker-item">Boot41 Talent Programme</span><span class="ticker-sep"> · </span>
+    <span class="ticker-item">ExtraSuite · Google Workspace AI</span><span class="ticker-sep"> · </span>
+    <span class="ticker-item">Foundation Voice · Enterprise Voice AI</span><span class="ticker-sep"> · </span>
+    <span class="ticker-item">Mindlap · 225+ Engineers on Waitlist</span><span class="ticker-sep"> · </span>
+    <span class="ticker-item">Dev41 Autopods · Fortune 500 Revenue</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="w">
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="stat-n"><em>4</em></div>
+        <div class="stat-l">Production-grade GenAI products launched in 18 months</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n">225<em>+</em></div>
+        <div class="stat-l">Engineers on Mindlap waitlist before public launch</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n"><em>2</em></div>
+        <div class="stat-l">Open-source products — including India's first enterprise voice AI</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n">F<em>500</em></div>
+        <div class="stat-l">Fortune 500 enterprise clients generating active revenue</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="w">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow">About Think41</div>
+        <div class="billboard">BUILT BY<br><em>BUILDERS.</em></div>
+        <p class="section-sub" style="margin-bottom:24px">Think41 is an enterprise GenAI company founded in Bangalore by engineers who've shipped software at HDFC, Hashedin, Gong, VMware, and Ola. We don't consult on AI transformation — we build the infrastructure that makes it real.</p>
+        <p style="font-size:14px;color:var(--ink3);line-height:1.75;margin-bottom:24px">Our thesis: most enterprise AI projects fail not because the models aren't good enough, but because there's no production-grade execution layer to connect them to enterprise systems. Think41 builds that layer — and ships it as products, not presentations.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div style="background:rgba(255,255,255,.04);border:1px solid var(--brd);border-radius:8px;padding:14px 18px;font-size:12px;color:var(--ink2);font-weight:600">📍 Bangalore, India</div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid var(--brd);border-radius:8px;padding:14px 18px;font-size:12px;color:var(--ink2);font-weight:600">📅 Founded 2024</div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid var(--brd);border-radius:8px;padding:14px 18px;font-size:12px;color:var(--ink2);font-weight:600">⚡ 4 Products in 18mo</div>
+        </div>
+      </div>
+      <div>
+        <div class="founders-grid">
+          <div class="founder-card">
+            <div class="founder-av">SR</div>
+            <div class="founder-name">Sripathi Krishnan</div>
+            <div class="founder-title">Co-Founder</div>
+            <div class="founder-co">Ex: <strong>Hashedin, HDFC</strong></div>
+          </div>
+          <div class="founder-card">
+            <div class="founder-av">HM</div>
+            <div class="founder-name">Hari Mohan</div>
+            <div class="founder-title">Co-Founder</div>
+            <div class="founder-co">Ex: <strong>Gong, VMware</strong></div>
+          </div>
+          <div class="founder-card">
+            <div class="founder-av">SK</div>
+            <div class="founder-name">Santhosh Kumar</div>
+            <div class="founder-title">Co-Founder</div>
+            <div class="founder-co">Ex: <strong>Ola, Hashedin</strong></div>
+          </div>
+          <div class="founder-card" style="background:rgba(232,64,64,.05);border-color:rgba(232,64,64,.15)">
+            <div class="founder-av">T<em style="font-style:normal;color:var(--red)">41</em></div>
+            <div class="founder-name">Think41</div>
+            <div class="founder-title">Founded 2024</div>
+            <div class="founder-co">Bangalore · <strong>Enterprise GenAI</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="w">
+    <div class="eyebrow">Products</div>
+    <div class="billboard">4 PRODUCTS.<br><em>REAL RESULTS.</em></div>
+    <p class="section-sub" style="margin-bottom:48px">Production-grade GenAI — not demos, not prototypes. Each product solves a real enterprise problem and is already deployed.</p>
+    <div class="prods-grid">
+      <div class="prod-card">
+        <div class="prod-top">
+          <svg class="prod-svg-bg" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+            <circle cx="380" cy="20" r="120" fill="rgba(232,64,64,.4)"/>
+          </svg>
+          <span class="prod-badge oss">OPEN SOURCE</span>
+          <div class="prod-icon">⚡</div>
+          <div class="prod-name">ExtraSuite</div>
+          <div class="prod-cat">AI Execution Layer · Google Workspace</div>
+          <div class="prod-desc">The missing piece in enterprise AI: a governed layer that lets AI agents write back into Gmail, Docs, Sheets, and Calendar — with audit trails, scoped OAuth, and service account isolation. AI that doesn't just advise. AI that acts.</div>
+        </div>
+        <div class="prod-bottom">
+          <div class="prod-stats">
+            <div><div class="ps-n">Mar '26</div><div class="ps-l">Launch</div></div>
+            <div><div class="ps-n">OSS</div><div class="ps-l">Open source</div></div>
+          </div>
+          <a href="think41_products_explainer.html#extrasuite" class="prod-link">Explore →</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">
+          <svg class="prod-svg-bg" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+            <circle cx="380" cy="20" r="120" fill="rgba(96,165,250,.4)"/>
+          </svg>
+          <span class="prod-badge oss">OPEN SOURCE</span>
+          <div class="prod-icon">🎙️</div>
+          <div class="prod-name">Foundation Voice</div>
+          <div class="prod-cat">Enterprise Voice AI Platform</div>
+          <div class="prod-desc">Enterprise-grade voice AI that goes beyond demos: real SIP telephony, CRM sync, on-prem or cloud deployment, Deepgram + ElevenLabs integration. One of the first enterprise voice AI platforms open-sourced in India.</div>
+        </div>
+        <div class="prod-bottom">
+          <div class="prod-stats">
+            <div><div class="ps-n">Jun '25</div><div class="ps-l">Open-sourced</div></div>
+            <div><div class="ps-n">SIP+</div><div class="ps-l">Real telephony</div></div>
+          </div>
+          <a href="think41_products_explainer.html#foundation" class="prod-link">Explore →</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">
+          <svg class="prod-svg-bg" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+            <circle cx="380" cy="20" r="120" fill="rgba(245,158,11,.3)"/>
+          </svg>
+          <span class="prod-badge beta">PRIVATE BETA</span>
+          <div class="prod-icon">🧠</div>
+          <div class="prod-name">Mindlap</div>
+          <div class="prod-cat">AI Agent Orchestrator · Engineering</div>
+          <div class="prod-desc">Multi-agent orchestration for engineering teams. Mindlap's "Omni" coordinates AI agents across the full engineering workflow — requirements to review to deployment. 5× agent hours per human. 50% less code review time.</div>
+        </div>
+        <div class="prod-bottom">
+          <div class="prod-stats">
+            <div><div class="ps-n">225+</div><div class="ps-l">Waitlist</div></div>
+            <div><div class="ps-n">5×</div><div class="ps-l">Agent hours</div></div>
+          </div>
+          <a href="think41_products_explainer.html#mindlap" class="prod-link">Explore →</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-top">
+          <svg class="prod-svg-bg" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+            <circle cx="380" cy="20" r="120" fill="rgba(34,197,94,.3)"/>
+          </svg>
+          <span class="prod-badge revenue">LIVE · REVENUE</span>
+          <div class="prod-icon">🚀</div>
+          <div class="prod-name">Dev41 + Autopods</div>
+          <div class="prod-cat">AI-Driven Engineering Delivery</div>
+          <div class="prod-desc">Not staffing. Not consulting. AI-augmented delivery pods that ship faster and cost less — human architects + AI executors, accountable for outcomes. Fortune 500 clients. Active revenue.</div>
+        </div>
+        <div class="prod-bottom">
+          <div class="prod-stats">
+            <div><div class="ps-n">F500</div><div class="ps-l">Clients</div></div>
+            <div><div class="ps-n">Live</div><div class="ps-l">Revenue</div></div>
+          </div>
+          <a href="think41_products_explainer.html#dev41" class="prod-link">Explore →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="w">
+    <div class="eyebrow amb">Services</div>
+    <div class="billboard">HOW WE<br><em>ENGAGE.</em></div>
+    <p class="section-sub" style="margin-bottom:48px">Beyond products, Think41 works directly with enterprises on GenAI implementation. We don't do slide decks — we do production deployments.</p>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <div class="svc-name">GenAI Implementation</div>
+        <div class="svc-desc">End-to-end deployment of GenAI solutions into enterprise environments. Architecture to go-live. Data governance, security, integration, and change management — all included.</div>
+        <div class="svc-tags"><span class="svc-tag">Architecture</span><span class="svc-tag">Integration</span><span class="svc-tag">Governance</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <div class="svc-name">Autopod Delivery</div>
+        <div class="svc-desc">AI-augmented engineering pods for specific software delivery outcomes. Faster than traditional outsourcing, more accountable than consulting. Outcome-based contracts — we own the result, not the headcount.</div>
+        <div class="svc-tags"><span class="svc-tag">Dev41</span><span class="svc-tag">Outcome-Based</span><span class="svc-tag">AI + Human</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <div class="svc-name">AI Workflow Automation</div>
+        <div class="svc-desc">Map, prioritise, and automate the workflows where AI can create the most leverage in your organisation. ExtraSuite and Foundation Voice as the tooling — Think41 expertise as the deployment layer.</div>
+        <div class="svc-tags"><span class="svc-tag">ExtraSuite</span><span class="svc-tag">Foundation Voice</span><span class="svc-tag">Automation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OSS -->
+<section id="oss">
+  <div class="w">
+    <div class="eyebrow gold">Open Source</div>
+    <div class="billboard">OPEN BY<br><em>DESIGN.</em></div>
+    <p class="section-sub" style="margin-bottom:36px">Enterprise IT teams don't deploy black boxes. Two of Think41's four products are fully open source — audit the code, verify governance, deploy on your own infrastructure.</p>
+    <div class="oss-banner">
+      <div>
+        <div style="font-size:22px;font-weight:900;color:#fff;margin-bottom:12px">ExtraSuite + Foundation Voice</div>
+        <p style="font-size:14px;color:var(--ink2);line-height:1.75;margin-bottom:24px">Both on GitHub. No vendor lock-in. No hidden governance. Deploy on-prem, in your cloud, or use our hosted version. The code is yours to inspect.</p>
+        <a href="https://github.com/think41" target="_blank" style="font-size:13px;font-weight:800;color:var(--gold);display:inline-flex;align-items:center;gap:6px">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+      <div class="oss-vis">
+        <div class="oss-file"><span class="dot r"></span>extrasuite/</div>
+        <div class="oss-file" style="margin-left:16px"><span class="dot y"></span>governance/</div>
+        <div class="oss-file" style="margin-left:32px"><span class="dot g"></span>oauth_manager.py</div>
+        <div class="oss-file" style="margin-left:32px"><span class="dot g"></span>audit_trail.py</div>
+        <div class="oss-file"><span class="dot r"></span>foundation-voice/</div>
+        <div class="oss-file" style="margin-left:16px"><span class="dot y"></span>telephony/</div>
+        <div class="oss-file" style="margin-left:32px"><span class="dot g"></span>sip_handler.py</div>
+        <div class="oss-file" style="margin-left:32px"><span class="dot g"></span>crm_sync.py</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THINK41 -->
+<section id="why">
+  <div class="w">
+    <div class="why-grid">
+      <div>
+        <div class="eyebrow blu">Why Think41</div>
+        <div class="billboard">THE REAL<br><em>DIFFERENCE.</em></div>
+        <p class="section-sub">Most enterprise AI vendors sell transformation roadmaps. We sell working software.</p>
+        <div class="why-points">
+          <div class="why-pt">
+            <div class="why-dot">🏗️</div>
+            <div><div class="why-pt-t">Production-First Engineering</div><div class="why-pt-d">Our founders built production systems at HDFC, Gong, VMware, and Ola. We don't prototype — we ship software that survives enterprise security reviews and production load.</div></div>
+          </div>
+          <div class="why-pt">
+            <div class="why-dot">🔓</div>
+            <div><div class="why-pt-t">Open Source by Default</div><div class="why-pt-d">Two of four products are fully open source — security teams can audit, compliance teams can verify, developers can extend. No black boxes.</div></div>
+          </div>
+          <div class="why-pt">
+            <div class="why-dot">⚡</div>
+            <div><div class="why-pt-t">Speed of an 18-Month-Old Startup</div><div class="why-pt-d">Four products in 18 months. ExtraSuite launched March 2026. Mindlap has 225+ on waitlist. We move at a pace legacy IT vendors physically cannot match.</div></div>
+          </div>
+          <div class="why-pt">
+            <div class="why-dot">🎯</div>
+            <div><div class="why-pt-t">Outcome Accountability</div><div class="why-pt-d">Dev41 Autopods contract on outcomes, not hours. When AI augments the team, the pod is accountable for shipping — not for filling timesheets.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="arch-vis">
+        <div class="arch-vis-title">THE THINK41 EDGE</div>
+        <div class="av-row">
+          <div class="av-cell" style="text-align:left;font-size:11px;color:rgba(255,255,255,.25);font-weight:700;letter-spacing:.06em">CAPABILITY</div>
+          <div class="av-cell" style="text-align:center;font-size:11px;color:rgba(232,64,64,.6);font-weight:700;letter-spacing:.06em">THINK41</div>
+          <div class="av-cell" style="text-align:center;font-size:11px;color:rgba(255,255,255,.2);font-weight:700;letter-spacing:.06em">LEGACY IT</div>
+        </div>
+        <div class="av-row">
+          <div class="av-cell" style="text-align:left">Production AI</div>
+          <div class="av-cell hot" style="text-align:center">✓ Ships</div>
+          <div class="av-cell" style="text-align:center;color:rgba(255,255,255,.2)">✗ Demos</div>
+        </div>
+        <div class="av-row">
+          <div class="av-cell" style="text-align:left">Open source</div>
+          <div class="av-cell hot" style="text-align:center">✓ Yes</div>
+          <div class="av-cell" style="text-align:center;color:rgba(255,255,255,.2)">✗ Rarely</div>
+        </div>
+        <div class="av-row">
+          <div class="av-cell" style="text-align:left">Speed to deploy</div>
+          <div class="av-cell hot" style="text-align:center">✓ Weeks</div>
+          <div class="av-cell" style="text-align:center;color:rgba(255,255,255,.2)">✗ Quarters</div>
+        </div>
+        <div class="av-row">
+          <div class="av-cell" style="text-align:left">On-prem option</div>
+          <div class="av-cell hot" style="text-align:center">✓ Always</div>
+          <div class="av-cell" style="text-align:center;color:rgba(255,255,255,.2)">✗ Extra cost</div>
+        </div>
+        <div class="av-row">
+          <div class="av-cell" style="text-align:left">Outcome contracts</div>
+          <div class="av-cell hot" style="text-align:center">✓ Yes</div>
+          <div class="av-cell" style="text-align:center;color:rgba(255,255,255,.2)">✗ Hours only</div>
+        </div>
+        <div class="av-row">
+          <div class="av-cell" style="text-align:left">AI + Human pods</div>
+          <div class="av-cell hot" style="text-align:center">✓ Autopods</div>
+          <div class="av-cell" style="text-align:center;color:rgba(255,255,255,.2)">✗ Human only</div>
+        </div>
+        <div style="margin-top:20px;padding:16px;background:rgba(232,64,64,.08);border:1px solid rgba(232,64,64,.2);border-radius:8px">
+          <div style="font-size:11px;font-weight:800;color:var(--red);letter-spacing:.06em;margin-bottom:6px">THE SHORT VERSION</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">We build production AI for enterprises who've seen enough PowerPoint. If you've been burned by AI vendors who over-promised and under-shipped — talk to us.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="w">
+    <div class="contact-grid">
+      <div>
+        <div class="eyebrow">Contact</div>
+        <div class="billboard">LET'S<br><em>TALK.</em></div>
+        <p class="section-sub" style="margin-bottom:40px">We work with enterprise teams who are serious about shipping GenAI. If that's you — not a discovery call where we pitch a deck, but a real conversation.</p>
+        <div class="contact-info">
+          <div><div class="ci-label">Email</div><a href="mailto:hello@think41.com" class="ci-link">hello@think41.com</a></div>
+          <div><div class="ci-label">For Enterprises</div><div style="font-size:14px;color:var(--ink2)">Tell us the problem. We'll tell you if we can help — honestly, within 48 hours.</div></div>
+          <div><div class="ci-label">For Developers</div><div style="font-size:14px;color:var(--ink2)">ExtraSuite and Foundation Voice are on GitHub. Pull requests welcome.</div></div>
+          <div><div class="ci-label">For Talent</div><div style="font-size:14px;color:var(--ink2)">Boot41 — our talent programme — trains engineers in AI-first delivery. Applications open year-round.</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="cform">
+          <div class="cform-title">Start a Conversation</div>
+          <div class="cform-field"><label class="cform-label">Your Name</label><input class="cform-input" type="text" placeholder="Your name"/></div>
+          <div class="cform-field"><label class="cform-label">Company</label><input class="cform-input" type="text" placeholder="Acme Corp"/></div>
+          <div class="cform-field"><label class="cform-label">Email</label><input class="cform-input" type="email" placeholder="you@company.com"/></div>
+          <div class="cform-field"><label class="cform-label">What are you trying to solve?</label><textarea class="cform-input" rows="4" placeholder="Tell us what you're working on..."></textarea></div>
+          <button class="cform-submit" onclick="handleSubmit(this)">Send Message →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="w">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">THINK<span>41</span></div>
+        <div class="footer-tagline">Enterprise GenAI that works in production. Built in Bangalore. Deployed globally.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Products</div>
+        <a href="think41_products_explainer.html#extrasuite" class="footer-link">ExtraSuite</a>
+        <a href="think41_products_explainer.html#foundation" class="footer-link">Foundation Voice</a>
+        <a href="think41_products_explainer.html#mindlap" class="footer-link">Mindlap</a>
+        <a href="think41_products_explainer.html#dev41" class="footer-link">Dev41 + Autopods</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <a href="#about" class="footer-link">About</a>
+        <a href="#services" class="footer-link">Services</a>
+        <a href="#oss" class="footer-link">Open Source</a>
+        <a href="#why" class="footer-link">Why Think41</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Marketing Hub</div>
+        <a href="index.html" class="footer-link">← Marketing Hub</a>
+        <a href="think41_quick_brief.html" class="footer-link">Quick Marketing Brief</a>
+        <a href="think41_master_report.html" class="footer-link">Detailed Report</a>
+        <a href="think41_products_explainer.html" class="footer-link">Products Explainer</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Think41. All rights reserved.</span>
+      <div style="display:flex;gap:8px">
+        <span class="fbadge">ExtraSuite · OSS</span>
+        <span class="fbadge">Foundation Voice · OSS</span>
+        <span class="fbadge red">Mindlap · Beta</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(btn){
+  btn.textContent='Message Received ✓';
+  btn.style.background='#16a34a';
+  btn.disabled=true;
+  setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';btn.disabled=false},3000);
+}
+const navLinks=document.querySelectorAll('.nav-link[href^="#"]');
+const sections=document.querySelectorAll('section[id]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)navLinks.forEach(l=>l.style.color=l.getAttribute('href')==='#'+e.target.id?'#fff':'');
+  });
+},{rootMargin:'-40% 0px -50% 0px'});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
