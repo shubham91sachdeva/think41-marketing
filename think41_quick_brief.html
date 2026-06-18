@@ -258,7 +258,30 @@ mark{background:linear-gradient(120deg,#fbbf2440,#fbbf2440);color:var(--ink);pad
   .timeline{flex-direction:column;gap:20px}
   .timeline::before{top:0;bottom:0;left:18px;right:auto;width:3px;height:auto}
   .tl-item{flex-direction:row;text-align:left;gap:14px;align-items:flex-start}
+  .vf-cols{grid-template-columns:1fr}
+  .vf-divider{display:none}
 }
+
+/* VOID+FIX */
+.vf-wrap{padding:56px 0 20px}
+.vf-intro-label{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.vf-intro-title{font-size:clamp(20px,2.8vw,28px);font-weight:900;color:var(--ink);line-height:1.25;letter-spacing:-.02em;margin-bottom:12px}
+.vf-intro-body{font-size:14px;color:var(--ink2);line-height:1.75;max-width:680px;margin-bottom:40px}
+.vf-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.vf-col-label{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.vf-col-label.void{color:var(--red)}
+.vf-col-label.fix{color:var(--grn)}
+.vf-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.vf-dot.red{background:var(--red)}
+.vf-dot.grn{background:var(--grn)}
+.vf-list{display:flex;flex-direction:column;gap:12px}
+.vf-item{display:flex;gap:12px;align-items:flex-start}
+.vf-bullet{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;margin-top:1px}
+.vf-bullet.v{background:var(--red-s);color:var(--red);border:1px solid rgba(192,57,43,.18)}
+.vf-bullet.f{background:var(--grn-s);color:var(--grn);border:1px solid rgba(22,163,74,.18)}
+.vf-text{font-size:13px;color:var(--ink2);line-height:1.65}
+.vf-text strong{color:var(--ink);font-weight:700}
+.vf-divider{width:1px;background:var(--brd)}
 </style>
 </head>
 <body>
@@ -304,8 +327,8 @@ mark{background:linear-gradient(120deg,#fbbf2440,#fbbf2440);color:var(--ink);pad
         <div class="stat-l">Indexable pages on think41.com. The website is invisible to Google. Completely. Zero.</div>
       </div>
       <div class="stat green">
-        <div class="stat-n green">4</div>
-        <div class="stat-l">Products live or in active beta — ExtraSuite, Foundation Voice, Mindlap, Dev41</div>
+        <div class="stat-n green">5</div>
+        <div class="stat-l">Products live or in active beta — ExtraSuite, Foundation Voice, Mindlap, Dev41, Recruit41</div>
       </div>
       <div class="stat">
         <div class="stat-n">100+</div>
@@ -318,7 +341,6 @@ mark{background:linear-gradient(120deg,#fbbf2440,#fbbf2440);color:var(--ink);pad
     </div>
   </div>
 </section>
-
 <!-- COMPANY -->
 <section id="company">
   <div class="w">
@@ -381,8 +403,8 @@ mark{background:linear-gradient(120deg,#fbbf2440,#fbbf2440);color:var(--ink);pad
         <div class="prod-accent green"></div>
         <div class="prod-date">Open-sourced June 2025</div>
         <div class="prod-head"><div class="prod-name">Foundation Voice</div><span class="badge open">OPEN SOURCE</span></div>
-        <div class="prod-desc">Enterprise voice AI platform built for production — SIP calling, CRM sync, cloud or on-prem deployable. Partners: Microsoft, Deepgram, ElevenLabs, Smallest.ai. One of the first enterprise voice AI platforms open-sourced in India.</div>
-        <div class="prod-tag">Voice AI</div><div class="prod-tag">On-Prem</div><div class="prod-tag">CRM Sync</div><div class="prod-tag">India OSS</div>
+        <div class="prod-desc">Enterprise voice AI platform built for production — SIP calling, CRM sync, cloud or on-prem deployable. Partners: Microsoft, Deepgram, ElevenLabs, Smallest.ai. One of the first enterprise voice AI platforms open-sourced in India. Live demos at think41.ai Experience Center.</div>
+        <div class="prod-tag">Voice AI</div><div class="prod-tag">On-Prem</div><div class="prod-tag">CRM Sync</div><div class="prod-tag">India OSS</div><div class="prod-tag">github.com/think41/foundation-voice</div><div class="prod-tag">think41.ai</div>
       </div>
       <div class="prod-card">
         <div class="prod-accent gold"></div>
@@ -397,6 +419,13 @@ mark{background:linear-gradient(120deg,#fbbf2440,#fbbf2440);color:var(--ink);pad
         <div class="prod-head"><div class="prod-name">Dev41 + Autopods</div><span class="badge live">LIVE · PROPRIETARY</span></div>
         <div class="prod-desc">AI-driven engineering delivery pods. Combines human engineers + AI agents into structured delivery units. Think41's primary commercial engine. Proprietary. Already generating revenue with large enterprise clients. Boot41 talent program feeds the pipeline.</div>
         <div class="prod-tag">Proprietary</div><div class="prod-tag">Enterprise</div><div class="prod-tag">Fortune 500</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-accent" style="background:var(--red)"></div>
+        <div class="prod-date">Live · Internal-to-product</div>
+        <div class="prod-head"><div class="prod-name">Recruit41</div><span class="badge live">LIVE</span></div>
+        <div class="prod-desc">AI-powered recruitment bot built on Foundation Voice. Started as an internal tool to screen 20,000+ job applicants for Think41's Boot41 program — then spun out as a standalone product. Automates high-volume voice-based candidate screening at scale.</div>
+        <div class="prod-tag">Voice AI</div><div class="prod-tag">HR Tech</div><div class="prod-tag">High-Volume Screening</div>
       </div>
     </div>
   </div>
