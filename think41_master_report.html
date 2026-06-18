@@ -304,7 +304,30 @@ mark{background:linear-gradient(120deg,#fbbf2440,#fbbf2440);color:var(--ink);pad
   .timeline-h::before{top:0;bottom:0;left:16px;right:auto;width:3px;height:auto}
   .tl-item{flex-direction:row;text-align:left;gap:14px}
   .gap-inner{grid-template-columns:1fr}
+  .vf-cols{grid-template-columns:1fr}
+  .vf-divider{display:none}
 }
+
+/* VOID+FIX */
+.vf-wrap{padding:56px 0 16px}
+.vf-intro-label{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.vf-intro-title{font-size:clamp(20px,2.8vw,28px);font-weight:900;color:var(--ink);line-height:1.25;letter-spacing:-.02em;margin-bottom:12px}
+.vf-intro-body{font-size:14px;color:var(--ink2);line-height:1.75;max-width:680px;margin-bottom:40px}
+.vf-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.vf-col-label{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.vf-col-label.void{color:var(--red)}
+.vf-col-label.fix{color:var(--grn)}
+.vf-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.vf-dot.red{background:var(--red)}
+.vf-dot.grn{background:var(--grn)}
+.vf-list{display:flex;flex-direction:column;gap:12px}
+.vf-item{display:flex;gap:12px;align-items:flex-start}
+.vf-bullet{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;margin-top:1px}
+.vf-bullet.v{background:var(--red-s);color:var(--red);border:1px solid rgba(192,57,43,.18)}
+.vf-bullet.f{background:var(--grn-s);color:var(--grn);border:1px solid rgba(22,163,74,.18)}
+.vf-text{font-size:13px;color:var(--ink2);line-height:1.65}
+.vf-text strong{color:var(--ink);font-weight:700}
+.vf-divider{width:1px;background:var(--brd)}
 </style>
 </head>
 <body>
@@ -321,6 +344,7 @@ mark{background:linear-gradient(120deg,#fbbf2440,#fbbf2440);color:var(--ink);pad
           <a class="pill" href="#company">Company</a>
           <a class="pill" href="#founders">Founders</a>
           <a class="pill" href="#products">Products</a>
+          <a class="pill" href="#competitive">Competitors</a>
           <a class="pill" href="#swot">SWOT</a>
           <a class="pill" href="#gaps">Gaps</a>
           <a class="pill" href="#platforms">Platforms</a>
@@ -343,7 +367,7 @@ mark{background:linear-gradient(120deg,#fbbf2440,#fbbf2440);color:var(--ink);pad
     <p class="hero-sub">Think41 builds and ships production-grade GenAI for Fortune 500 companies. They have world-class product, a unicorn-quality founder story, and two open-source releases. They have <strong>zero marketing presence</strong>. This report is about fixing that.</p>
     <div class="hero-chips">
       <span class="chip red">0 indexed pages on think41.com</span>
-      <span class="chip">4 products live or in beta</span>
+      <span class="chip">5 products live or in beta</span>
       <span class="chip">100+ team members</span>
       <span class="chip">Fortune 500 clients · revenue generating</span>
       <span class="chip">Founded Nov 2024 · bootstrapped</span>
@@ -418,7 +442,7 @@ mark{background:linear-gradient(120deg,#fbbf2440,#fbbf2440);color:var(--ink);pad
         <div class="founder-name">Anshuman Singh</div>
         <div class="founder-title">Co-Founder · Think41</div>
         <div class="founder-prev">HashedIn Founder → Deloitte MD</div>
-        <div class="founder-story">Co-builder of HashedIn from day one. Carries 15+ years of technical leadership perspective on what it actually takes to ship engineering at scale.</div>
+        <div class="founder-story">Voice AI lead and public spokesperson. Appeared on the Deepgram Podcast to discuss Foundation Voice and Recruit41. Co-builder of HashedIn from day one — 15+ years technical leadership. The face of Think41's voice AI narrative.</div>
       </div>
       <div class="founder-card">
         <div class="founder-init">HS</div>
@@ -476,9 +500,9 @@ mark{background:linear-gradient(120deg,#fbbf2440,#fbbf2440);color:var(--ink);pad
         <div class="prod-bar green"></div>
         <div class="prod-date">Open-sourced June 2025</div>
         <div class="prod-head"><div class="prod-name">Foundation Voice</div><span class="badge open">OPEN SOURCE</span></div>
-        <div class="prod-desc">Enterprise voice AI platform built for production — SIP calling, CRM sync, cloud or on-prem deployable. One of the first enterprise voice AI platforms open-sourced in India. Partners: Microsoft, Deepgram, ElevenLabs, Smallest.ai.</div>
+        <div class="prod-desc">Enterprise voice AI platform built for production — SIP calling, CRM sync, cloud or on-prem deployable. One of the first enterprise voice AI platforms open-sourced in India. Partners: Microsoft, Deepgram, ElevenLabs, Smallest.ai. Live demos available at think41.ai Experience Center.</div>
         <div class="prod-quote">"Think41 Joins India's Open-Source AI Movement" — PR Newswire, June 2025</div>
-        <div class="prod-tag">Voice AI</div><div class="prod-tag">On-Prem Ready</div><div class="prod-tag">CRM Sync</div><div class="prod-tag">OSS India Pioneer</div>
+        <div class="prod-tag">Voice AI</div><div class="prod-tag">On-Prem Ready</div><div class="prod-tag">CRM Sync</div><div class="prod-tag">OSS India Pioneer</div><div class="prod-tag">github.com/think41/foundation-voice</div><div class="prod-tag">think41.ai</div>
       </div>
       <div class="prod-card">
         <div class="prod-bar gold"></div>
@@ -496,14 +520,70 @@ mark{background:linear-gradient(120deg,#fbbf2440,#fbbf2440);color:var(--ink);pad
         <div class="prod-quote">This is the product that's already proven. The enterprise client list that can't be publicly named is Think41's strongest possible proof point.</div>
         <div class="prod-tag">Proprietary</div><div class="prod-tag">Enterprise</div><div class="prod-tag">Fortune 500 Revenue</div>
       </div>
+      <div class="prod-card">
+        <div class="prod-bar" style="background:var(--red)"></div>
+        <div class="prod-date">Live · Internal-to-product spinout</div>
+        <div class="prod-head"><div class="prod-name">Recruit41</div><span class="badge live">LIVE</span></div>
+        <div class="prod-desc">AI-powered voice recruitment bot built on Foundation Voice. Started as an internal screening tool for Think41's Boot41 program — processed 20,000+ applicants — then spun out as a standalone product. Automates high-volume voice-based candidate screening at scale.</div>
+        <div class="prod-quote">The best demo of Foundation Voice's enterprise capabilities is a product Think41 already built on top of it — and shipped.</div>
+        <div class="prod-tag">Voice AI</div><div class="prod-tag">HR Tech</div><div class="prod-tag">High-Volume Screening</div><div class="prod-tag">Foundation Voice</div>
+      </div>
     </div>
     <div class="callout blue" style="margin-top:24px">
-      <strong>The portfolio problem:</strong> Four distinct products with four distinct value propositions — and <mark>no brand architecture</mark> that ties them together under Think41. An enterprise buyer who finds ExtraSuite has no obvious path to Dev41. Fix this before scaling paid distribution.
+      <strong>The portfolio problem:</strong> Five distinct products with five distinct value propositions — and <mark>no brand architecture</mark> that ties them together under Think41. An enterprise buyer who finds ExtraSuite has no obvious path to Dev41. Fix this before scaling paid distribution.
     </div>
   </div>
 </section>
 
 <!-- SWOT -->
+<section id="competitive">
+  <div class="w">
+    <div class="eyebrow">Competitive Landscape</div>
+    <div class="billboard">WHO ELSE IS<em>IN THE ROOM.</em></div>
+    <p style="color:var(--ink2);max-width:680px;margin-bottom:32px">Think41 competes across two vectors: enterprise AI services (Fractal, EXL, Artefact) and voice/conversational AI platforms (Gnani.ai, Haptik). Understanding both helps sharpen positioning.</p>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-bar red"></div>
+        <div class="prod-date">Enterprise AI Analytics &amp; Services</div>
+        <div class="prod-head"><div class="prod-name">Fractal Analytics</div><span class="badge live">FUNDED · GLOBAL</span></div>
+        <div class="prod-desc"><strong>Products:</strong> Crux (AI decision intelligence platform), Flyfish (AI retail experience). <strong>Clients:</strong> Fortune 500 — named engagements include CPG majors, insurance, financial services. <strong>Where seen:</strong> Gartner reports, Fortune 500 RFPs, Fortune magazine coverage, Nasscom summits. <strong>Scale:</strong> 4,000+ employees, $685M+ raised. Strong India + US presence. Think41 differentiator: full-stack voice + open-source vs. Fractal's analytics-first, closed approach.</div>
+        <div class="prod-tag">Enterprise Analytics</div><div class="prod-tag">AI Platforms</div><div class="prod-tag">Fortune 500 Clients</div><div class="prod-tag">US + India</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-bar gold"></div>
+        <div class="prod-date">Enterprise AI &amp; Analytics</div>
+        <div class="prod-head"><div class="prod-name">EXL Service</div><span class="badge live">NASDAQ: EXLS</span></div>
+        <div class="prod-desc"><strong>Products:</strong> EXL Analytics, EXL Operations, AI-powered BPO services. <strong>Clients:</strong> Insurance (Allstate, GEICO-adjacent), healthcare, banking — disclosed Fortune 500 names. <strong>Where seen:</strong> Earnings calls, Wall Street analyst reports, LinkedIn sponsored content, Insurance/Banking conference keynotes. <strong>Scale:</strong> $1.6B revenue, 55,000 employees. Think41 differentiator: voice-first + product company vs. EXL's analytics BPO model.</div>
+        <div class="prod-tag">BPO + AI</div><div class="prod-tag">Insurance/Healthcare</div><div class="prod-tag">NASDAQ-listed</div><div class="prod-tag">Enterprise Contracts</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-bar blue"></div>
+        <div class="prod-date">AI Services &amp; Data Strategy</div>
+        <div class="prod-head"><div class="prod-name">Artefact</div><span class="badge open">EU-HEADQUARTERED</span></div>
+        <div class="prod-desc"><strong>Products:</strong> Data consulting, AI strategy, marketing analytics, Cookieless transformation services. <strong>Clients:</strong> L'Oréal, Samsung, Air France, BNP Paribas, Renault. <strong>Where seen:</strong> European tech conferences, MarTech events, LinkedIn thought leadership, Gartner Magic Quadrant mentions. <strong>Scale:</strong> 1,500+ consultants across 16 countries. Think41 differentiator: voice AI product + India delivery vs. Artefact's EU consulting model with no open-source play.</div>
+        <div class="prod-tag">Data Strategy</div><div class="prod-tag">European Clients</div><div class="prod-tag">AI Consulting</div><div class="prod-tag">MarTech</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-bar green"></div>
+        <div class="prod-date">Voice AI · India-first</div>
+        <div class="prod-head"><div class="prod-name">Gnani.ai</div><span class="badge live">INDIA · FUNDED</span></div>
+        <div class="prod-desc"><strong>Products:</strong> Gnani ASR (India-language speech recognition), Gnani Virtual Agent, voice bots for IVR. <strong>Clients:</strong> HDFC Bank, Axis Bank, ICICI, TATA Group, Myntra, Swiggy. <strong>Where seen:</strong> India fintech/BFSI conferences, NASSCOM AI Summit, YourStory coverage, LinkedIn. Raised Series B. <strong>Most direct competitor to Foundation Voice</strong> — both target enterprise voice AI in India. Think41 differentiator: open-source + global tech stack (Deepgram, ElevenLabs) vs. Gnani's proprietary India-language-first ASR.</div>
+        <div class="prod-tag">India Voice AI</div><div class="prod-tag">BFSI Clients</div><div class="prod-tag">IVR/ASR</div><div class="prod-tag">Series B</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-bar" style="background:var(--amb)"></div>
+        <div class="prod-date">Conversational AI · Enterprise</div>
+        <div class="prod-head"><div class="prod-name">Haptik (Jio Platforms)</div><span class="badge live">JIO-BACKED</span></div>
+        <div class="prod-desc"><strong>Products:</strong> Contakt (contact center AI), Interakt (WhatsApp commerce), AI agent platform. <strong>Clients:</strong> Tata Motors, Zurich Insurance, Kotak, L'Oréal India. <strong>Where seen:</strong> MWC, WhatsApp Business summits, India SaaS events, Jio press coverage. Backed by Reliance/Jio — significant distribution advantage. Think41 differentiator: SIP voice + open-source + non-WhatsApp-gated vs. Haptik's WhatsApp + Jio distribution moat.</div>
+        <div class="prod-tag">WhatsApp AI</div><div class="prod-tag">Contact Center</div><div class="prod-tag">Jio-backed</div><div class="prod-tag">India Enterprise</div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:24px;border-left:4px solid var(--grn)">
+      <strong>Think41's whitespace:</strong> No direct competitor sits at the intersection of open-source voice AI + full-stack enterprise implementation + India-priced delivery with prior-exit founders. Fractal/EXL don't do voice-first. Gnani/Haptik don't have open-source credibility or global tech partnerships. Artefact isn't even in the game. The gap is real — but it closes fast if Foundation Voice doesn't build community and visibility in the next 6 months.
+    </div>
+  </div>
+</section>
+
 <section id="swot">
   <div class="w">
     <div class="eyebrow">Honest Assessment</div>
