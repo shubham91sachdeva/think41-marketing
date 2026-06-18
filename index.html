@@ -73,6 +73,29 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent);animation:scrollpulse 2s ease-in-out infinite}
 @keyframes scrollpulse{0%,100%{opacity:.3;transform:scaleY(.8)}50%{opacity:.8;transform:scaleY(1)}}
 
+/* ── VOID + FIX SECTION ── */
+.vf-section{padding:72px 2.5rem 64px;max-width:1080px;margin:0 auto}
+.vf-intro{margin-bottom:48px}
+.vf-intro-label{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+.vf-intro-title{font-size:clamp(22px,3vw,32px);font-weight:900;color:var(--ink);line-height:1.25;letter-spacing:-.02em;margin-bottom:14px}
+.vf-intro-body{font-size:15px;color:var(--ink2);line-height:1.75;max-width:680px}
+.vf-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.vf-col-label{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.vf-col-label.void{color:var(--red)}
+.vf-col-label.fix{color:var(--grn)}
+.vf-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.vf-dot.red{background:var(--red)}
+.vf-dot.grn{background:var(--grn)}
+.vf-list{display:flex;flex-direction:column;gap:14px}
+.vf-item{display:flex;gap:14px;align-items:flex-start}
+.vf-bullet{width:24px;height:24px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;margin-top:1px}
+.vf-bullet.v{background:var(--red-s);color:var(--red);border:1px solid rgba(192,57,43,.2)}
+.vf-bullet.f{background:var(--grn-s);color:var(--grn);border:1px solid rgba(22,163,74,.2)}
+.vf-text{font-size:14px;color:var(--ink2);line-height:1.65}
+.vf-text strong{color:var(--ink);font-weight:700}
+.vf-divider{width:1px;background:var(--brd);align-self:stretch}
+@media(max-width:720px){.vf-cols{grid-template-columns:1fr}.vf-divider{display:none}}
+
 /* ── MARQUEE ── */
 .marquee-wrap{background:var(--red);padding:12px 0;overflow:hidden;white-space:nowrap;position:relative}
 .marquee-track{display:inline-flex;gap:0;animation:marquee 28s linear infinite}
@@ -210,6 +233,71 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   <div class="scroll-hint">
     <div class="scroll-line"></div>
     scroll
+  </div>
+</div>
+
+<!-- VOID + FIX -->
+<div class="vf-section">
+  <div class="vf-intro">
+    <div class="vf-intro-label">Here's the honest picture</div>
+    <div class="vf-intro-title">Think41 has built things worth talking about.<br>Nobody's talking about them yet.</div>
+    <div class="vf-intro-body">This isn't a critique — it's an observation anyone would make after spending a few hours looking at the company. The product is real. The clients are real. The team has done this before. What's missing is the trail of evidence that lets a buyer, a journalist, or a potential hire find their way to Think41 before a competitor does.</div>
+  </div>
+
+  <div class="vf-cols">
+    <div>
+      <div class="vf-col-label void"><span class="vf-dot red"></span>What's currently missing</div>
+      <div class="vf-list">
+        <div class="vf-item">
+          <div class="vf-bullet v">1</div>
+          <div class="vf-text"><strong>The website doesn't show up on Google.</strong> Zero indexed pages means a CTO who hears about Think41 at a conference, Googles the name the next morning, and finds nothing — walks away. That's a warm lead gone cold before anyone even knew it existed.</div>
+        </div>
+        <div class="vf-item">
+          <div class="vf-bullet v">2</div>
+          <div class="vf-text"><strong>The founders haven't told their story anywhere.</strong> Four co-founders who built HashedIn from scratch, sold it to Deloitte, served as Deloitte Managing Directors, then left together to start Think41 — that's earned credibility most startups would kill for. None of it is on LinkedIn, the website, or in any press coverage.</div>
+        </div>
+        <div class="vf-item">
+          <div class="vf-bullet v">3</div>
+          <div class="vf-text"><strong>The open-source repos are quiet.</strong> ExtraSuite and Foundation Voice are on GitHub but there's no community activity, no README that explains why someone should care, and no blog post that drove developers there. OSS only compounds if people actually show up.</div>
+        </div>
+        <div class="vf-item">
+          <div class="vf-bullet v">4</div>
+          <div class="vf-text"><strong>No one knows what Think41 actually does.</strong> "Enterprise GenAI" is what every third company says right now. There's no clear articulation of what makes Think41 different — production-grade, open-source, outcome-accountable — in a place where buyers would actually read it.</div>
+        </div>
+        <div class="vf-item">
+          <div class="vf-bullet v">5</div>
+          <div class="vf-text"><strong>The 18-month window is closing.</strong> Enterprise AI is still early enough that a company like Think41 can become a known name. In another 18 months, buyers will have shortlists. The time to get on those shortlists is before they're written.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vf-divider"></div>
+
+    <div>
+      <div class="vf-col-label fix"><span class="vf-dot grn"></span>What actually fixes it</div>
+      <div class="vf-list">
+        <div class="vf-item">
+          <div class="vf-bullet f">1</div>
+          <div class="vf-text"><strong>Rebuild the website and get it indexed.</strong> Not a redesign for aesthetics — a rebuild with actual product pages, technical content, and the kind of on-page SEO that takes three weeks to implement and then compounds for years. Every page is a surface area that didn't exist before.</div>
+        </div>
+        <div class="vf-item">
+          <div class="vf-bullet f">2</div>
+          <div class="vf-text"><strong>Put the founder story online, once, properly.</strong> One well-written LinkedIn post from each founder per week is enough. Buyers Google people before they pick up the phone. If there's nothing to find, there's no phone call. This costs nothing except consistency.</div>
+        </div>
+        <div class="vf-item">
+          <div class="vf-bullet f">3</div>
+          <div class="vf-text"><strong>Make the repos worth visiting.</strong> A good README, a "why we built this" blog post, and a few responses to GitHub issues from a founder — that's it. Developers become advocates when they feel the team actually cares. Right now there's no signal either way.</div>
+        </div>
+        <div class="vf-item">
+          <div class="vf-bullet f">4</div>
+          <div class="vf-text"><strong>Write one sharp positioning statement and put it everywhere.</strong> Something specific enough to mean something: "We build the execution layer that lets AI agents write back into enterprise systems safely." That's the kind of line a buyer repeats internally when they're selling Think41 up the chain.</div>
+        </div>
+        <div class="vf-item">
+          <div class="vf-bullet f">5</div>
+          <div class="vf-text"><strong>Hire one marketing person now, not later.</strong> Not an agency. Not a freelancer. One full-time person whose job is to build the content engine, own the website, and keep the founders publishing. Everything else — paid, PR, events — can wait. The foundation comes first.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -407,6 +495,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
           <span class="tag">Foundation Voice</span>
           <span class="tag">Mindlap</span>
           <span class="tag">Dev41 Autopods</span>
+          <span class="tag">Recruit41</span>
           <span class="tag">Architecture</span>
           <span class="tag">Comparisons</span>
           <span class="tag">OSS</span>
